@@ -8,6 +8,11 @@ bool deviceFound = false;
 bool lit = false;
 bool BotonOff = false;
 String knownAddresses[] = { "fe:58:8a:5b:c7:4a"};
+/*******************************************************************
+you can add multiple known device's addresses separated by comma like:
+String knownAddresses[] = { "fe:58:8a:5b:c7:4a","ee:f5:8b:44:cd:2a"};
+********************************************************************/
+
 unsigned long entry;
 
 
@@ -37,7 +42,7 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
       if (known) {
         Serial.print("Device found: ");
         Serial.println(Device.getRSSI());
-        if (Device.getRSSI() > -85) {
+        if (Device.getRSSI() > -85) {        //You can set the threshold here
           deviceFound = true;
         }
         else {
@@ -78,7 +83,7 @@ void Bluetooth() {
     delay(1000);
   }
   else{
-    digitalWrite(LED,LOW);
+    digitalWrite(LED,LOW);        
     delay(1000);
   }
 }
